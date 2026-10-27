@@ -6,9 +6,9 @@
 
 ## Aufgabe 1: Messsystem
 
-![Messsystem](abbildungen/A1_Messsystem.png)
+![Messschaltung](abbildungen/Messchaltung.webp)
 
-*Abbildung 1: Aufbau des Messsystems. Schwarz: Daten, rot gestrichelt: Versorgung.*
+*Abbildung 1: Messaufbau mit Daten- und Versorgungspfaden.*
 
 - **BMA400:** 3-Achsen-Beschleunigungssensor (MEMS) mit 12 Bit. Messbereich und Abtastrate (ODR) lassen sich einstellen. Die Messwerte stehen in den Registern 0x04–0x09.
 - **I²C-Bus:** 2-Draht-Bus (SDA = A4, SCL = A5) mit 100 kHz. Der Arduino ist Master, der Sensor Slave mit der Adresse 0x14.
