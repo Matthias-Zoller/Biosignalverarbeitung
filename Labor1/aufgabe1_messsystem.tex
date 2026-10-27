@@ -1,0 +1,28 @@
+% Aufgabe 1 – Messsystem
+% Präambel des Berichts:
+% \usepackage{graphicx}
+
+\section{Aufbau des Messsystems}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{blockschaltbild.jpg}
+    \caption{Blockschaltbild des stationären Messsystems mit Komponenten, Bussen und Signalpfaden.}
+    \label{fig:messsystem}
+\end{figure}
+
+\subsection*{Komponenten}
+\begin{description}
+    \item[Sensor BMA400:] Digitaler 3-Achsen-Beschleunigungssensor, dessen MEMS-Element die Beschleunigung erfasst und intern mit einem 12-Bit-ADC im Messbereich $\pm 2\,g$ digitalisiert. Die Werte werden mit der eingestellten Abtastrate (ODR, 100~Hz) in den Datenregistern bereitgestellt.
+    \item[SparkFun RedBoard Qwiic:] Arduino-Uno-kompatibles Board mit dem Mikrocontroller ATmega328P (16~MHz), der den Sensor konfiguriert, die Rohdaten alle 10~ms ausliest, in~$g$ umrechnet und jeden Messwert mit einem Zeitstempel (\texttt{millis()}) versieht. Ein USB-Seriell-Wandler (CH340C) leitet die Daten an den PC weiter.
+    \item[PC (Serieller Monitor):] Der serielle Monitor der Arduino IDE empfängt die Messwerte zeilenweise als Text (\texttt{X Y Z Time}) und zeigt sie an. Die Daten werden anschließend per Copy \& Paste in einer Textdatei gespeichert.
+    \item[Python:] Die Textdatei wird mit \texttt{pandas} eingelesen, mit \texttt{SciPy} gefiltert und mit \texttt{matplotlib} dargestellt und ausgewertet.
+\end{description}
+
+\subsection*{Busse und Signalpfade}
+\begin{description}
+    \item[I\textsuperscript{2}C (100~kHz):] Serieller Bus, über den das RedBoard den Sensor einstellt und die Messwerte ausliest.
+    \item[USB 2.0 (12~Mbit/s):] Überträgt die Messwerte vom RedBoard zum PC (intern per UART mit 57\,600~Baud).
+    \item[Datenpfad PC $\rightarrow$ Python:] Die Messdaten werden als Textdatei an Python übergeben.
+    \item[Spannungsversorgung:] Das RedBoard wird über USB mit 5~V versorgt und versorgt den Sensor mit 3,3~V.
+\end{description}
