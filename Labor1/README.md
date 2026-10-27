@@ -27,7 +27,9 @@
 - **Erste ~140 ms bei 0.25 statt 0.49:** Bevor `setRange(2G)` greift, ist der Standardbereich ±4 g aktiv → diese Werte verwerfen.
 - **Bewegungsphase (ca. 2–4.7 s):** Y wechselt fast bei jedem Sample das Vorzeichen → die Bewegung liegt nahe/über der Nyquist-Frequenz (6.25 Hz) → **Aliasing**, die Kurve gibt die Bewegung nicht korrekt wieder.
 - **Lösung (Aufgabe 5):** ODR erhöhen (z. B. `BMA400_ODR_100HZ`) und `delay(10)` passend dazu setzen.
-  - Datenblatt-Seite, Register und alle möglichen ODR-Werte: **noch nachtragen**
+  - Datenblatt (Rev. 2.3) **S. 64**, Register `ACC_CONFIG1` (0x1A), Bits 3:0 `acc_odr`
+  - Mögliche Werte: 0x05 = 12.5 Hz, 0x06 = 25, 0x07 = 50, 0x08 = **100**, 0x09 = 200, 0x0A = 400, 0x0B = 800 Hz (0x00–0x04 und 0x0C–0x0F reserved)
+  - Gewählt: 100 Hz → Sketch `Lab1Code2_BMA_100Hz`
 
 ## Abtastrate bestimmen (Python)
 ```python
