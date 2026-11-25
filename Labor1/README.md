@@ -1,4 +1,18 @@
-# Labor 1 – Biosignalverarbeitung (Stand: Aufgabe 4 & 5)
+# Labor 1 – Biosignalverarbeitung (Gruppe 4)
+
+## Ordnerstruktur
+| Ordner | Inhalt |
+|---|---|
+| `Abgabe/` | **Fertige Abgabe:** `Lab1_Gruppe_4.zip` (+ entpackter Ordner) – das wird auf Sakai hochgeladen |
+| `Auswertung/` | `MainCode1.ipynb`, Messdaten (`data/`), Abbildungen (`figures/`), modifizierter Arduino-Code (Aufgabe 5) |
+| `Bericht/` | LaTeX-Quelle `laborbericht.tex` (Bauen: `latexmk -pdf laborbericht.tex`), Messschaltung (Abb. 1), Literatur, Vorlage |
+| `Arduino/` | Ausgangs-Sketches: `Lab1Code1_BMA` (BMA400, 12,5 Hz) und `Lab1Code2` (MMA8452Q + OpenLog, mobil) |
+
+Abgabe neu bauen: Notebook in `Auswertung/` ausführen → Bericht kompilieren → PDF als `Bericht_1_Gruppe_4.pdf`, Notebook, `data/`, `figures/` und `Lab1Code1_modifiziert/` nach `Abgabe/Lab1_Gruppe_4/` kopieren und zippen.
+
+---
+
+## Notizen (Stand Aufgabe 4 & 5, BMA400)
 
 ## Hardware
 - **Sensor:** SparkFun BMA400 (3-Achsen-Beschleunigung), I2C, Adresse `0x14`
