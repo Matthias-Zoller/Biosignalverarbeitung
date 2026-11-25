@@ -1,0 +1,96 @@
+% =====================================================================
+%  definitions.tex -- angepasste Kopie von Vorlagen/definitions.tex
+%  (MCI-Vorlage V3.0, Drauschke/Teschl/Mehrle)
+%
+%  Layout, Farben, Überschriften, Abstände und Verzeichnisnamen sind
+%  unverändert übernommen. Geändert wurde nur, was mit pdflatex /
+%  aktuellem TeX Live nicht mehr kompiliert:
+%    - "german"           -> babel/ngerman + UTF-8 (Umlaute direkt tippen)
+%    - graphicx[dvips]    -> graphicx (pdflatex kann PNG/PDF einbinden)
+%    - pst-all, wallpaper, pgfplots, units, subfigure entfernt
+%      (Konflikte \unit/\ang, nur für latex+dvips gedacht, nicht benötigt)
+%    - PSTricks-Makros (Netzwerk-/Blocksymbole) entfernt
+%  Ergänzt: booktabs, listings, \todo für offene Stellen.
+% =====================================================================
+
+\ifthenelse{\boolean{english}}
+  {\usepackage[english]{babel}}
+  {\usepackage[ngerman]{babel}}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage[tmargin=1in,bmargin=1in,lmargin=1.25in,rmargin=1.25in]{geometry}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[overload]{textcase}
+\definecolor{MSBlue}{rgb}{.204,.353,.541}
+\definecolor{MSLightBlue}{rgb}{.31,.506,.741}
+% Set formats for each heading level (Abschnitte klein geschrieben wie in der Vorlage)
+\titleformat{\section}[hang]{\rmfamily\bfseries\huge\color{MSBlue}}{\thesection}{1em}{\MakeLowercase}[]
+\titleformat{\subsection}{\large\bfseries\sffamily\uppercase}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\sffamily\bfseries}{\thesubsubsection}{1em}{}
+% babel überschreibt die Namen bei \begin{document}, daher erst dort setzen
+% (\ifthenelse außerhalb, weil \MakeLowercase es in der Überschrift nicht verträgt)
+\ifthenelse{\boolean{english}}
+  {\AtBeginDocument{%
+    \renewcommand\contentsname{table of contents.}%
+    \renewcommand\listfigurename{list of figures.}%
+    \renewcommand\listtablename{list of tables.}%
+    \renewcommand\refname{\litname.}}}
+  {\AtBeginDocument{%
+    \renewcommand\contentsname{inhaltsverzeichnis.}%
+    \renewcommand\listfigurename{abbildungsverzeichnis.}%
+    \renewcommand\listtablename{tabellenverzeichnis.}%
+    \renewcommand\refname{\litname.}}}
+\usepackage{exscale,relsize}
+\usepackage{fancyhdr}
+\usepackage[small]{caption}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{rotating}
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+\usepackage{listings}
+\setlength{\emergencystretch}{2em}
+
+\newcommand{\babel}[2]{\ifthenelse{\boolean{english}}{#1}{#2}}
+
+% auxillary symbols
+\newcommand{\define}{\stackrel{!}{=}}
+\renewcommand{\equiv}{\,\widehat{=}\,}
+\newcommand{\subsubsubsection}{\textbf}
+\newcommand{\mif}{\quad\mathrm{\babel{if}{falls}}\quad}
+\newcommand{\with}{\quad\mathrm{\babel{with}{mit}}\quad}
+\newcommand{\for}{\quad\mathrm{\babel{for}{für}}\quad}
+\newcommand{\matlab}{MATLAB}
+
+% format specifications
+\renewcommand{\emph}{\textbf}
+\newcommand{\file}{\textit}
+\newcommand{\cmd}{\texttt}
+\newcommand{\ten}{\boldsymbol}
+\newcommand{\lemma}{\textit}
+
+% Pfade zu Grafiken
+\graphicspath{{abbildungen/}{../Abgabe_Lab1/figures/}}
+
+% mathematical operators
+\newcommand{\grad}{\,\mathrm{grad}\,}
+\renewcommand{\div}{\,\mathrm{div}\,}
+\newcommand{\rot}{\,\mathrm{rot}\,}
+\newcommand{\lap}{\Delta}
+\newcommand{\laplace}[1]{\mathscr{L}\left\{#1\right\}}
+\newcommand{\trans}{^T}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+\setlength{\captionmargin}{3em}
+
+% Quellcode (für Ausschnitte und Anhang)
+\lstset{basicstyle=\ttfamily\footnotesize,frame=single,columns=fullflexible,
+        keywordstyle=\bfseries,language=C++,breaklines=true}
+
+% Offene Stellen rot markieren -- vor der Abgabe müssen alle weg sein
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{[TODO:} #1\textbf{]}}}

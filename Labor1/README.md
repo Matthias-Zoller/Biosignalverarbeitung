@@ -29,7 +29,7 @@
 - **Lösung (Aufgabe 5):** ODR erhöhen (z. B. `BMA400_ODR_100HZ`) und `delay(10)` passend dazu setzen.
   - Datenblatt (Rev. 2.3) **S. 64**, Register `ACC_CONFIG1` (0x1A), Bits 3:0 `acc_odr`
   - Mögliche Werte: 0x05 = 12.5 Hz, 0x06 = 25, 0x07 = 50, 0x08 = **100**, 0x09 = 200, 0x0A = 400, 0x0B = 800 Hz (0x00–0x04 und 0x0C–0x0F reserved)
-  - Gewählt: 100 Hz → Sketch `Lab1Code2_BMA_100Hz`
+  - Gewählt: 100 Hz → Sketch `Lab1Code1_BMA_100Hz` (= Lab1Code1 mit 100 Hz, nicht der Lab1Code2 für Aufgabe 9)
 
 ## Abtastrate bestimmen (Python)
 ```python
